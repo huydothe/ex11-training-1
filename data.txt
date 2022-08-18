@@ -1,0 +1,44 @@
+create database QuanLyHocVien;
+use QuanLyHocVien;
+create table Class(
+ClassID int primary key,
+ClassName varchar(20),
+StartDate varchar(20),
+Status bit
+);
+
+create table Student(
+StudentID int primary key,
+StudentName varchar(20),
+Address varchar(50),
+Phone int,
+Status bit,
+ClassID int
+);
+
+create table SubjectMH(
+SubID int primary key,
+SubName varchar(20),
+Creadit int,
+Status bit
+);
+
+create table Mark(
+MarkID int,
+SubID int,
+StudentID int,
+Mark int,
+ExamTimes int
+);
+
+alter table Mark
+add foreign key (SubID) references SubjectMH(SubID);
+
+alter table Mark
+add foreign key (StudentID) references Student(StudentID);
+
+
+use QuanLyHocVien;
+
+alter table Class
+modify column StartDate varchar(20);
